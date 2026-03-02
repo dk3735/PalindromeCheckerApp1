@@ -2,20 +2,16 @@ import java.util.Scanner;
 
 public class UC9 {
 
-    // Recursive method to check palindrome
     public static boolean isPalindrome(String str, int start, int end) {
 
-        // Base Condition 1: If pointers cross or meet
         if (start >= end) {
             return true;
         }
 
-        // If characters do not match
         if (str.charAt(start) != str.charAt(end)) {
             return false;
         }
 
-        // Recursive Call: Move towards center
         return isPalindrome(str, start + 1, end - 1);
     }
 
@@ -28,7 +24,6 @@ public class UC9 {
 
         String input = scanner.nextLine();
 
-        // Convert to lowercase (case-insensitive check)
         input = input.toLowerCase();
 
         boolean result = isPalindrome(input, 0, input.length() - 1);
