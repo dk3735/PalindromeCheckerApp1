@@ -1,7 +1,5 @@
 import java.util.Scanner;
-
-public class UC10
-{
+public class UC10 {
 
     public static boolean isPalindrome(String str) {
 
@@ -30,7 +28,8 @@ public class UC10
 
         input = input.toLowerCase();
 
-        input = input.replaceAll("
+        input = input.replaceAll("\\s+", "");
+
         boolean result = isPalindrome(input);
 
         if (result) {
