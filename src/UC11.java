@@ -1,49 +1,47 @@
 import java.util.Scanner;
-import java.util.Stack;
-
 class PalindromeChecker {
-
     public boolean checkPalindrome(String input) {
-        input = preprocess(input);
 
-        Stack<Character> stack = new Stack<>();
+        input = input.toLowerCase().replaceAll("\\s+", "");
 
-        for (char ch : input.toCharArray()) {
-            stack.push(ch);
-        }
+        int left = 0;
+        int right = input.length() - 1;
 
-        for (char ch : input.toCharArray()) {
-            if (ch != stack.pop()) {
+        while (left < right) {
+            if (input.charAt(left) != input.charAt(right)) {
                 return false;
             }
+            left++;
+            right--;
         }
 
         return true;
     }
-    private String preprocess(String input) {
-        return input.toLowerCase().replaceAll("\\s+", "");
-    }
 }
 
+// Main Application Class
 public class UC11 {
 
     public static void main(String[] args) {
 
+        System.out.println("=================================");
+        System.out.println("     PALINDROME CHECKER APP     ");
+        System.out.println("=================================");
+
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("=== Object-Oriented Palindrome Checker ===");
-        System.out.print("Enter a string: ");
-
+        System.out.print("Enter a sentence: ");
         String input = scanner.nextLine();
 
+        // Create service object
         PalindromeChecker checker = new PalindromeChecker();
 
         boolean result = checker.checkPalindrome(input);
 
         if (result) {
-            System.out.println("Result: The string is a Palindrome.");
+            System.out.println("It is a Palindrome");
         } else {
-            System.out.println("Result: The string is NOT a Palindrome.");
+            System.out.println("It is NOT a Palindrome");
         }
 
         scanner.close();
