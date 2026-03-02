@@ -22,5 +22,4 @@ public class UC3 {
 
         scanner.close();
     }
-}{
 }
