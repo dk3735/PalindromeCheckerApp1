@@ -1,26 +1,34 @@
 import java.util.Scanner;
+import java.util.Stack;
+
 class PalindromeChecker {
+
     public boolean checkPalindrome(String input) {
 
-        input = input.toLowerCase().replaceAll("\\s+", "");
+        input = preprocess(input);
 
-        int left = 0;
-        int right = input.length() - 1;
+        Stack<Character> stack = new Stack<>();
 
-        while (left < right) {
-            if (input.charAt(left) != input.charAt(right)) {
+        for (char ch : input.toCharArray()) {
+            stack.push(ch);
+        }
+
+        for (char ch : input.toCharArray()) {
+            if (ch != stack.pop()) {
                 return false;
             }
-            left++;
-            right--;
         }
 
         return true;
     }
+
+    private String preprocess(String input) {
+        return input.toLowerCase().replaceAll("\\s+", "");
+    }
 }
 
-// Main Application Class
-public class UC11 {
+public class UC11
+{
 
     public static void main(String[] args) {
 
@@ -33,15 +41,14 @@ public class UC11 {
         System.out.print("Enter a sentence: ");
         String input = scanner.nextLine();
 
-        // Create service object
         PalindromeChecker checker = new PalindromeChecker();
 
         boolean result = checker.checkPalindrome(input);
 
         if (result) {
-            System.out.println("It is a Palindrome");
+            System.out.println("Result: It is a Palindrome.");
         } else {
-            System.out.println("It is NOT a Palindrome");
+            System.out.println("Result: It is NOT a Palindrome.");
         }
 
         scanner.close();
